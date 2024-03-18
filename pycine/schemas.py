@@ -1,0 +1,30 @@
+from pydantic import BaseModel
+
+class UserBase(BaseModel):
+    email: str
+
+
+class UserCreate(UserBase):
+    password: str
+
+
+class User(UserBase):
+    id: int
+    is_active: bool
+
+    class Config:
+        orm_mode = True
+
+class FavoriteBase(BaseModel):
+    idMovie: int
+    idUser: int
+
+class Favorites(FavoriteBase):
+    id: int
+
+class FavoritePeopleBase(BaseModel):
+    idPerson: int
+    idUser: int
+
+class FavoritePeople(FavoritePeopleBase):
+    id: int
